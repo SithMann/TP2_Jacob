@@ -26,7 +26,11 @@ static
 err_t individu_detruire( individu_t ** individu ) 
 {
   /* ce que j'ai ajouté : */
-
+  (*individu)->nom = NULL;
+  (*individu)->prenom = NULL;
+  (*individu)->p_affIndiv = NULL;
+  (*individu)->p_delIndiv = NULL;
+  free((*individu));
   /* stop */
   return(OK) ; 
 }
@@ -41,7 +45,7 @@ void individu_afficher( individu_t * const individu )
       printf( "%s %s" , individu->prenom , individu->nom ) ;
     }
   printf( "}" ) ; 
-}
+} 
 
 extern 
 individu_t * individu_creer( char * const prenom , char * const nom ) 

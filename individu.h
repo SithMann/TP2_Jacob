@@ -7,7 +7,7 @@
 /*
  * DEFINITION OBJET "INDIVIDU"  
  */
-
+ 
 typedef struct individu_s 
 {
   char * nom ;
