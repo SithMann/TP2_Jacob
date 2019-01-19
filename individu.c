@@ -25,9 +25,9 @@ booleen_t individu_existe( individu_t * const individu )
 static 
 err_t individu_detruire( individu_t ** individu ) 
 {
-  /*
-   * A FAIRE 
-   */
+  // ce que j'ai ajouté : 
+
+  // stop
   return(OK) ; 
 }
 
@@ -50,6 +50,8 @@ individu_t * individu_creer( char * const prenom , char * const nom )
   // ce que j'ai ajouté : 
   individu.nom = nom;
   individu.prenom = prenom;
+  individu.p_affIndiv = individu_afficher;
+  individu.p_delIndiv = individu_detruire;
   // stop
   return( individu ) ;
 }

@@ -12,8 +12,8 @@ typedef struct individu_s
 {
   char * nom ;
   char * prenom ;
-  void * p_affIndiv = individu_afficher;
-  err_t * p_affIndiv = individu_detruire;
+  void * p_affIndiv;
+  err_t * p_delIndiv;
 } individu_t ;
 
 /*
