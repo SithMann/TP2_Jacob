@@ -47,8 +47,9 @@ extern
 individu_t * individu_creer( char * const prenom , char * const nom ) 
 {
   individu_t * individu = NULL ; 
-  /*
-   * A FAIRE
-   */
+  // ce que j'ai ajouté : 
+  individu.nom = nom;
+  individu.prenom = prenom;
+  // stop
   return( individu ) ;
 }
