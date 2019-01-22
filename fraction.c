@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fraction.h>
-
+  
 
 /*
  * VARIABLE LOCALE
