@@ -12,6 +12,6 @@ typedef struct objet_s objet_t ;
 struct objet_s 
 {
 #include <attributs_objet.h>
-} ;
+};
 
 #endif

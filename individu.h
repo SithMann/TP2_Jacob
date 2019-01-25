@@ -10,10 +10,9 @@
  
 typedef struct individu_s 
 {
+  #include <attributs_objet.h>
   char * nom ;
   char * prenom ;
-  void * p_affIndiv;
-  err_t * p_delIndiv;
 } individu_t ;
 
 /*

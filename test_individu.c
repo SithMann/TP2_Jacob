@@ -16,14 +16,18 @@ main()
   indiv_1 = individu_creer( "Roger" , "Waters" ) ;
 
   printf( "Test affichage indiv_1\n" ) ;  
-  printf("\n***********\n* A FAIRE *\n***********\n");
+  /* Ajout */
+  indiv_1->p_affiche((objet_t *)indiv_1);
+  /*printf("\n***********\n* A FAIRE *\n***********\n");*/
   printf( "\n");
 
   printf( "Test d'existance sur un individu_t existant\n" ) ;
   ( individu_existe(indiv_1) ? printf("-->OK\n") : printf ("-->KO\n") )  ;
   
   printf( "Test destruction indiv_1\n" ) ;
-  printf("\n***********\n* A FAIRE *\n***********\n");
+  /* Ajout*/
+  indiv_1->p_delete((objet_t **)indiv_1);
+  /*printf("\n***********\n* A FAIRE *\n***********\n");*/
   
   printf( "Fin du programme des test sur les objets de type individu_t\n" ) ; 
   

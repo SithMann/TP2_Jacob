@@ -10,6 +10,7 @@
 
 typedef struct fraction_s 
 {
+  #include <attributs_objet.h>
   int numerateur ;
   int denominateur ;
 } fraction_t ;

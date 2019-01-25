@@ -20,17 +20,19 @@ booleen_t individu_existe( individu_t * const individu )
     return(FAUX) ;
   else
     return(VRAI) ; 
-}
+} 
 
 static 
 err_t individu_detruire( individu_t ** individu ) 
 {
   /* ce que j'ai ajouté : */
+  
   (*individu)->nom = NULL;
   (*individu)->prenom = NULL;
-  (*individu)->p_affIndiv = NULL;
-  (*individu)->p_delIndiv = NULL;
+  (*individu)->p_affiche = NULL;
+  (*individu)->p_delete = NULL;
   free((*individu));
+  (*individu) = NULL;
   /* stop */
   return(OK) ; 
 }
@@ -51,11 +53,13 @@ extern
 individu_t * individu_creer( char * const prenom , char * const nom ) 
 {
   individu_t * individu = NULL ; 
-  /* ce que j'ai ajouté : */
+    /* ce que j'ai ajouté : */
+  individu = malloc(sizeof(individu_t));
   individu->nom = nom;
   individu->prenom = prenom;
-  individu->p_affIndiv = individu_afficher;
-  individu->p_delIndiv = individu_detruire;
+  /* cast des fonctions car conflits de types entre individu et objet */
+  individu->p_affiche = (void (*) (objet_t *))individu_afficher;
+  individu->p_delete = (err_t (*) (objet_t **))individu_detruire;
   /* stop */
   return( individu ) ;
 }
