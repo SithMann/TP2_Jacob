@@ -26,13 +26,10 @@ static
 err_t individu_detruire( individu_t ** individu ) 
 {
   /* ce que j'ai ajouté : */
-  
-  (*individu)->nom = NULL;
-  (*individu)->prenom = NULL;
-  (*individu)->p_affiche = NULL;
-  (*individu)->p_delete = NULL;
-  free((*individu));
-  (*individu) = NULL;
+  if(individu_existe((*individu))){
+    free((*individu));
+    (*individu) = NULL;
+  }
   /* stop */
   return(OK) ; 
 }

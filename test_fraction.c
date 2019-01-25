@@ -16,15 +16,16 @@ main()
   fraction = fraction_creer( 5 , 7 ) ;
 
   printf( "Test affichage fraction\n" ) ;
-  printf("\n***********\n* A FAIRE *\n***********\n");
+  fraction->p_affiche((objet_t *)fraction);
   printf( "\n");
 
   printf( "Test d'existance sur un fraction_t existant\n" ) ;
   ( fraction_existe(fraction) ? printf("-->OK\n") : printf ("-->KO\n") )  ;
   
   printf( "Test destruction fraction\n" ) ;
-  printf("\n***********\n* A FAIRE *\n***********\n");
-  
+  fraction->p_delete((objet_t **)(&fraction));
+
+
   printf( "Fin du programme des test sur les objets de type fraction_t\n" ) ; 
   
   printf( "Nombre de fraction_t  = %lu\n" , fraction_cpt ) ;

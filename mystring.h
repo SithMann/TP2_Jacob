@@ -10,6 +10,7 @@
 
 typedef struct string_s 
 {
+  #include <attributs_objet.h>
   char * string ;
 } string_t ;
 

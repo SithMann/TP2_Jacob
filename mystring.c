@@ -25,9 +25,12 @@ booleen_t string_existe( string_t * const string )
 static 
 err_t string_detruire( string_t ** string ) 
 {
-  /*
-   * A FAIRE
-   */
+  /* ce que j'ai ajouté : */
+  if(string_existe((*string))){
+    free((*string));
+    (*string) = NULL;
+  }
+  /* stop */
   return(OK) ; 
 }
 
@@ -47,9 +50,12 @@ extern
 string_t * string_creer( char * const chaine ) 
 {
   string_t * string = NULL ; 
-
-  /* 
-   * A FAIRE
-   */
+  /*Ce que jai fait : */
+  string = malloc(sizeof(string_t));
+  string->string = chaine;
+  /* cast des fonctions car conflits de types entre string et objet */
+  string->p_affiche = (void (*) (objet_t *))string_afficher;
+  string->p_delete = (err_t (*) (objet_t **))string_detruire;
+  /*stop*/
   return( string ) ;
 }

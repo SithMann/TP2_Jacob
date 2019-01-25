@@ -13,17 +13,17 @@ main()
   ( string_existe(chaine) ? printf("-->KO\n") : printf ("-->OK\n") )  ;
 
   printf( "Test creation string_t\n" ) ;
-  chaine = string_creer( "azertyuiop" ) ;
+  chaine = string_creer( "test" ) ;
 
   printf( "Test affichage chaine\n" ) ;
-  printf("\n***********\n* A FAIRE *\n***********\n");
+  chaine->p_affiche((objet_t *)chaine);
   printf( "\n");
 
   printf( "Test d'existance sur un string_t existant\n" ) ;
   ( string_existe(chaine) ? printf("-->OK\n") : printf ("-->KO\n") )  ;
   
   printf( "Test destruction chaine\n" ) ;
-  printf("\n***********\n* A FAIRE *\n***********\n");  
+  chaine->p_delete((objet_t **)(&chaine));
   printf( "Fin du programme des test sur les objets de type string_t\n" ) ; 
   
   printf( "Nombre de string_t  = %lu\n" , string_cpt ) ;

@@ -26,7 +26,7 @@ main()
   
   printf( "Test destruction indiv_1\n" ) ;
   /* Ajout*/
-  indiv_1->p_delete((objet_t **)indiv_1);
+  indiv_1->p_delete((objet_t **)(&indiv_1));
   /*printf("\n***********\n* A FAIRE *\n***********\n");*/
   
   printf( "Fin du programme des test sur les objets de type individu_t\n" ) ; 
