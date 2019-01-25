@@ -131,10 +131,12 @@ liste_t * liste_creer( const int nb )
 extern
 err_t liste_detruire( liste_t ** liste )
 {
-  /*
-   * A FAIRE
-   */
-
+  /* ce que j'ai ajouté : */
+  if(liste_existe((*liste))){
+    free((*liste));
+    (*liste) = NULL;
+  }
+  /* stop */
   return(OK) ;
 }
 
@@ -146,10 +148,16 @@ err_t liste_detruire( liste_t ** liste )
  */
 
 extern 
-void liste_afficher( liste_t * const liste ,
-		     const char separateur )
+void liste_afficher( liste_t * const liste , const char separateur )
 {
-  /*
-   * A FAIRE
-   */
+  int i;
+  printf( "%c", separateur ) ; 
+  if(  liste_existe(liste) ) 
+    {
+      for(i = 0; i<liste->nb;i++){
+        printf( "%c", separateur ) ; 
+        liste->liste->p_affiche((objet_t *)liste->liste);
+      }
+    }
+  printf( "%c", separateur ) ; 
 }
