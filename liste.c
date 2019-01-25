@@ -152,11 +152,12 @@ void liste_afficher( liste_t * const liste , const char separateur )
 {
   int i;
   printf( "%c", separateur ) ; 
-  if(  liste_existe(liste) ) 
+  if(  liste_existe(liste) && !liste_vide(liste)) 
     {
       for(i = 0; i<liste->nb;i++){
         printf( "%c", separateur ) ; 
-        (*liste->liste)->p_affiche((objet_t *)(*liste->liste));
+        if(liste_elem_lire(liste,i) != NULL)
+          liste_elem_lire(liste,i)->p_affiche(liste_elem_lire(liste,i));
       }
     }
   printf( "%c", separateur ) ; 
