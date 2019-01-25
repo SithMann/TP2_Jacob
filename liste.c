@@ -156,7 +156,7 @@ void liste_afficher( liste_t * const liste , const char separateur )
     {
       for(i = 0; i<liste->nb;i++){
         printf( "%c", separateur ) ; 
-        liste->liste->p_affiche((objet_t *)liste->liste);
+        (*liste->liste)->p_affiche((objet_t *)(*liste->liste));
       }
     }
   printf( "%c", separateur ) ; 
