@@ -4,7 +4,7 @@
 #include <commun.h>
 
 /*
- * DEFINITION OBJET 
+ * DEFINITION OBJET  
  */
 
 typedef struct objet_s objet_t ;
