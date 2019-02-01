@@ -9,10 +9,17 @@
 #define LISTE_ID_NULL -1
 
 
-typedef struct liste_s
+typedef struct liste_s liste_t ;
+struct liste_s
 {
+  int (*nb_lire)(liste_t * const);
+  objet_t *(*elem_lire)(liste_t * const, const int);
+  booleen_t (*vide)(liste_t * const);
+  err_t(*elem_ecrire)( liste_t *  , objet_t * const  , const int);
+  err_t (*detruire)( liste_t ** );
+  void (*afficher)( liste_t * const, const char);
   int nb ;		/* Nombre d'objets dans la liste  */
   objet_t ** liste ;	/* liste  des objets */
-} liste_t ;
+};
 
 #endif

@@ -40,7 +40,7 @@ objet_t * liste_elem_lire( liste_t * const liste  , const int ind )
 /*
  * Tests 
  */
-
+/* Ne pas modif en etape 3 */
 extern 
 booleen_t liste_existe( liste_t * const liste )
 {
@@ -95,6 +95,7 @@ err_t liste_elem_ecrire( liste_t * liste ,
 
 /*
  * Creation d'une liste 
+ * Ne pas modif etape 3
  */
 extern
 liste_t * liste_creer( const int nb )
@@ -109,6 +110,12 @@ liste_t * liste_creer( const int nb )
 
   liste->nb = nb ;
   liste->liste = (objet_t**)NULL ;
+  liste->nb_lire = liste_nb_lire;
+  liste->elem_lire = liste_elem_lire;
+  liste->vide = liste_vide;
+  liste->elem_ecrire = liste_elem_ecrire;
+  liste->detruire = liste_detruire;
+  liste->afficher = liste_afficher;
   if( nb > 0 ) 
     {
       if( ( liste->liste = malloc( sizeof(objet_t *) * nb ) ) == NULL ) 

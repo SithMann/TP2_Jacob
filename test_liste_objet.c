@@ -16,13 +16,40 @@ main()
   string_t * str_2 = string_creer( "qsdfghjklm" ) ;
   string_t * str_3 = string_creer( "wxcvbn" ) ; 
 
-  /* liste_t * liste = NULL ; */
+  liste_t * liste = NULL ; 
 
   printf( "Debut du programme des test sur les objets de type liste_t\n" ) ; 
 
-  printf("\n***********\n* A FAIRE *\n***********\n");
+  printf( "Test d'existance sur une liste_t inexistant\n" ) ;
+  ( liste_existe(liste) ? printf("-->KO\n") : printf ("-->OK\n") )  ;
 
+  printf( "Test creation liste_t\n" ) ;
+  liste = liste_creer(8) ;  
+  liste_elem_ecrire( liste , (objet_t *)indiv_1 , 0 ) ;
+  liste_elem_ecrire( liste , (objet_t *)frac_1  , 1 ) ;
+  liste_elem_ecrire( liste , (objet_t *)str_1   , 2 ) ;
+  liste_elem_ecrire( liste , (objet_t *)indiv_2 , 3 ) ;
+  liste_elem_ecrire( liste , (objet_t *)frac_2  , 4 ) ;
+  liste_elem_ecrire( liste , (objet_t *)str_2   , 5 ) ;
+  liste_elem_ecrire( liste , (objet_t *)str_3   , 7 ) ;
+
+  printf( "Test affichage liste \n" ) ;
+  liste_afficher( liste , ' ' ) ; 
+  printf( "\n");
+
+  printf( "Test d'existance sur une liste_t existant\n" ) ;
+  ( liste_existe(liste) ? printf("-->OK\n") : printf ("-->KO\n") )  ;
+  
+  printf( "Test destruction liste\n" ) ;
+  if( ( noerr = liste_detruire( &liste) ) )
+    { 
+      printf("Sortie avec code erreur = %d\n" , noerr ) ;
+      return(noerr) ; 
+    }
+  
   printf( "Fin du programme des test sur les objets de type liste_t\n" ) ; 
   
+  printf( "Nombre de liste_t  = %lu\n" , liste_cpt ) ;
+
   return(0) ; 
 }
