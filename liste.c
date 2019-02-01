@@ -132,9 +132,14 @@ extern
 err_t liste_detruire( liste_t ** liste )
 {
   /* ce que j'ai ajouté : */
+  int i;
   if(liste_existe((*liste))){
-    free((*liste));
-    (*liste) = NULL;
+      for(i = 0; i<(*liste)->nb;i++){
+        if(liste_elem_lire(*liste,i) != NULL)
+          liste_elem_lire(*liste,i)->p_delete(liste_elem_lire(*liste,i));
+      }
+      free((*liste)->liste);
+      free(*liste);
   }
   /* stop */
   return(OK) ;

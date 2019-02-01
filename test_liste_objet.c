@@ -25,23 +25,23 @@ main()
 
   printf( "Test creation liste_t\n" ) ;
   liste = liste_creer(8) ;  
-  liste_elem_ecrire( liste , (objet_t *)indiv_1 , 0 ) ;
-  liste_elem_ecrire( liste , (objet_t *)frac_1  , 1 ) ;
-  liste_elem_ecrire( liste , (objet_t *)str_1   , 2 ) ;
-  liste_elem_ecrire( liste , (objet_t *)indiv_2 , 3 ) ;
-  liste_elem_ecrire( liste , (objet_t *)frac_2  , 4 ) ;
-  liste_elem_ecrire( liste , (objet_t *)str_2   , 5 ) ;
-  liste_elem_ecrire( liste , (objet_t *)str_3   , 7 ) ;
+  liste->elem_ecrire( liste , (objet_t *)indiv_1 , 0 ) ;
+  liste->elem_ecrire( liste , (objet_t *)frac_1  , 1 ) ;
+  liste->elem_ecrire( liste , (objet_t *)str_1   , 2 ) ;
+  liste->elem_ecrire( liste , (objet_t *)indiv_2 , 3 ) ;
+  liste->elem_ecrire( liste , (objet_t *)frac_2  , 4 ) ;
+  liste->elem_ecrire( liste , (objet_t *)str_2   , 5 ) ;
+  liste->elem_ecrire( liste , (objet_t *)str_3   , 7 ) ;
 
   printf( "Test affichage liste \n" ) ;
-  liste_afficher( liste , ' ' ) ; 
+  liste->afficher( liste , ' ' ) ; 
   printf( "\n");
 
   printf( "Test d'existance sur une liste_t existant\n" ) ;
   ( liste_existe(liste) ? printf("-->OK\n") : printf ("-->KO\n") )  ;
   
   printf( "Test destruction liste\n" ) ;
-  if( ( noerr = liste_detruire( &liste) ) )
+  if( ( noerr = liste->detruire( &liste) ) )
     { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
       return(noerr) ; 

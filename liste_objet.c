@@ -27,10 +27,10 @@ int liste_nb_lire( liste_t * const liste )
 extern 
 objet_t * liste_elem_lire( liste_t * const liste  , const int ind )
 {
-  if( (ind < 0) || (ind > liste_nb_lire(liste)-1 ) )
+  if( (ind < 0) || (ind > liste->nb_lire(liste)-1 ) )
     {
       fprintf( stderr , "liste_elem_lire: mauvais indice d'element [%d] (devrait etre dans [%d..%d])\n",
-	       ind , 0 , liste_nb_lire(liste)-1 );
+	       ind , 0 , liste->nb_lire(liste)-1 );
       return(NULL);
     }
 
@@ -83,7 +83,7 @@ err_t liste_elem_ecrire( liste_t * liste ,
   if( (ind < 0) || (ind > liste_nb_lire(liste) ) )
     {
       fprintf( stderr , "liste_elem_ecrire: mauvais indice d'element [%d] (devrait etre dans [%d..%d]\n",
-	       ind , 0 , liste_nb_lire(liste) );
+	       ind , 0 , liste->nb_lire(liste) );
       return(ERR_LISTE_IND_ELEM);
     }
 #endif
@@ -111,7 +111,7 @@ liste_t * liste_creer( const int nb )
   liste->nb = nb ;
   liste->liste = (objet_t**)NULL ;
   liste->nb_lire = liste_nb_lire;
-  liste->elem_lire = liste_elem_lire;
+  liste->elem_lire = *liste_elem_lire;
   liste->vide = liste_vide;
   liste->elem_ecrire = liste_elem_ecrire;
   liste->detruire = liste_detruire;
@@ -137,11 +137,18 @@ liste_t * liste_creer( const int nb )
 
 extern
 err_t liste_detruire( liste_t ** liste )
-{
+{ 
   /* ce que j'ai ajouté : */
+  int i;
   if(liste_existe((*liste))){
-    free((*liste));
-    (*liste) = NULL;
+    objet_t * elem;
+      for(i = 0; i<(*liste)->nb;i++){
+        elem = (*liste)->elem_lire(*liste,i);
+        if( elem != NULL)
+          elem->p_delete(&elem);
+      }
+      free((*liste)->liste);
+      free(*liste);
   }
   /* stop */
   return(OK) ;
@@ -159,12 +166,12 @@ void liste_afficher( liste_t * const liste , const char separateur )
 {
   int i;
   printf( "%c", separateur ) ; 
-  if(  liste_existe(liste) && !liste_vide(liste)) 
+  if(  liste_existe(liste) && !liste->vide(liste)) 
     {
       for(i = 0; i<liste->nb;i++){
         printf( "%c", separateur ) ; 
-        if(liste_elem_lire(liste,i) != NULL)
-          liste_elem_lire(liste,i)->p_affiche(liste_elem_lire(liste,i));
+        if(liste->elem_lire(liste,i) != NULL)
+          liste->elem_lire(liste,i)->p_affiche(liste->elem_lire(liste,i));
       }
     }
   printf( "%c", separateur ) ; 
